@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Accordion from "./components/Accordion";
+import Dropdown from "./components/Dropdown";
+import Search from "./components/Search";
 
-function App() {
+const items = [
+  {
+    title: "Question 1?",
+    content: "Content 1",
+  },
+  {
+    title: "Question 2?",
+    content: "Content 2",
+  },
+  {
+    title: "Question 3?",
+    content: "Content 3",
+  },
+];
+
+const options = [
+  {
+    label: "The color red",
+    value: "Red",
+  },
+  {
+    label: "The color green",
+    value: "green",
+  },
+  {
+    label: "The color Blue",
+    value: "Blue",
+  },
+];
+
+const App = () => {
+  const [selected, setSelected] = useState(options[0]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="ui container">
+        <Dropdown
+          options={options}
+          onSelectedChange={setSelected}
+          selected={selected}
+        />
+      </div>
+      <br />
+      <div className="ui container">
+        <Accordion items={items} />
+      </div>
+      <br />
+      <div className="ui container">
+        <Search />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
