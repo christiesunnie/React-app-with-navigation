@@ -31,7 +31,7 @@ const Search = () => {
 
       return () => clearTimeout(timeoutId);
     }
-  }, [term]);
+  }, [term, results.length]);
 
   const renderedResults = results.map((result) => {
     return (
